@@ -80,9 +80,9 @@ client.on("ready", () => {
 
 
     console.log(`──────────────────────────────────────────
-➤ | ${client.user.tag} Online! | Developed By Allizine
+➤ | ${client.user.tag} Online! | Developed By @Reaper Team
 ──────────────────────────────────────────`)
-    client.user.setActivity(config.botStatus || "Developed By Allizine");
+    client.user.setActivity(config.botStatus || "Developed By @Reaper Team");
 
-    process.title = config.botStatus + " | Developed By Allizine"
+    process.title = config.botStatus + " | Developed By @Reaper Team"
 });
