@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require("discord.js");
 const { ModalBuilder, ActionRowBuilder, TextInputBuilder, TextInputStyle, 
-    EmbedBuilder } = require('discord.js');
+    EmbedBuilder, } = require('discord.js');
 const { description } = require("./help");
 module.exports = {
     name: 'embedCreator',
@@ -8,7 +8,6 @@ module.exports = {
     option: [],
 
     run: async (client, interaction) => {
-            const commands = client.slashCommands.map(x => `\`${x.name}\``).join(", ")
             const modal = new ModalBuilder()
             .setTitle('Embed Creator')
             .setCustomId('modal');
@@ -60,9 +59,10 @@ module.exports = {
             colorembed,
             image,
             thumbnail
-        );
+        )
         interaction.showModal(modal);
+        interaction.reply
 
-    }   
-    
+    }
 }
+    

@@ -43,6 +43,7 @@ for (const file of eventFiles) {
 }
 
 
+
 client.login(config.token).catch(e => {
 console.log(`──────────────────────────────────────────
 ✕ | Invalid Discord Bot Token!
