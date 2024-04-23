@@ -28,7 +28,7 @@ module.exports = {
     ],
     run: async (client, interaction) => {
         const { guild, member, options } = interaction;
-        const userToBanOption = options.getMember('user'); // Using value '1' to get user option
+        const userToBanOption = options.getMember('user'); 
         if (!userToBanOption) {
             return interaction.reply({ content: "User not found.", ephemeral: true });
         }
@@ -68,7 +68,7 @@ module.exports = {
 
             const banEmbed = new EmbedBuilder()
                 .setTitle('User Banned')
-                .setColor('#ff0000') // Set color using hexadecimal value
+                .setColor('#ff0000') 
                 .setDescription(`**${userToBan.tag}** has been banned.`)
                 .addFields(
                     { name: 'User ID:', value: userToBan.id, inline: true },
@@ -81,7 +81,6 @@ module.exports = {
             const logChannel = guild.channels.cache.get('1224478374739836978');
             if (logChannel && logChannel instanceof TextChannel) {
                 // `logChannel` is defined and is a TextChannel
-                // You can call `isText` or any other method on it
                 logChannel.send({ embeds: [banEmbed] });
             } else {
                 // `logChannel` is not defined or is not a TextChannel
@@ -99,7 +98,7 @@ module.exports = {
                     // Create an embed for the unban action
                     const unbanEmbed = new EmbedBuilder()
                         .setTitle('User Unbanned')
-                        .setColor('#00ff00') // Green color
+                        .setColor('#00ff00') 
                         .setDescription(`**${userToBan.tag}** has been unbanned after ${banDurationString}.`);
 
                     // Send the unban embed to the ban log channel

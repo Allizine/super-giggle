@@ -24,7 +24,7 @@ module.exports = {
         const channel = guild.channels.cache.get(channelOption.value);
         const message = options.getString('message');
 
-       if  (!member.permissions.has('ADMINISTRATOR')) {
+       if  (!member.permissions.has('BAN_MEMBERS')) {
             return interaction.reply({ content: 'You do not have permission to use this command.', ephemeral: true });
         }
 
