@@ -1,4 +1,4 @@
-const { MessageEmbed, version } = require('discord.js');
+const { EmbedBuilder, version } = require('discord.js');
 
 module.exports = {
     name: "statistics",
@@ -15,7 +15,7 @@ module.exports = {
             const userCount = getUserCount(); // Function to get the number of users the bot can see
 
             // Construct embed
-            const botembed = new MessageEmbed()
+            const botembed = new EmbedBuilder()
                 .setColor('#0099ff')
                 .setTitle('Bot Statistics')
                 .setDescription('Here are some statistics about the bot:')
@@ -37,3 +37,4 @@ module.exports = {
         return interaction.reply({ embeds: [botStatisticsEmbed] }).catch(err => {});
     },
 };
+
