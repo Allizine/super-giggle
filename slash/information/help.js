@@ -9,7 +9,8 @@ module.exports = {
     run: async (client, interaction) => {
         // Initialize an embed builder
         const helpEmbed = new EmbedBuilder()
-            .setColor(0x0099FF)
+            .setColor(Colors.Yellow)
+            .setThumbnail('https://cdn.discordapp.com/attachments/1230961241166708827/1231308232216150086/E2BCA5AA-C636-4BC8-9737-84913863EB2E.png?ex=662558a7&is=66240727&hm=48627983284f127e022c92e12767c6b2d16bdd1185d0d007e304e3bba0e7828b&')
             .setTitle('Bot Slash Commands')
             .setTimestamp();
 
@@ -27,9 +28,9 @@ module.exports = {
                 // Read the content of each folder
                 const commandFiles = fs.readdirSync(folderPath).filter(file => file.endsWith('.js'));
 
-                // Add category title
-                helpEmbed.addFields({ name: `**${folder.charAt(0).toUpperCase() + folder.slice(1)}**`, value: '\u200B' });
-
+                // Initialize an array to store command descriptions
+                const commandDescriptions = [];
+                
                 // Iterate over each command file in the folder
                 for (const file of commandFiles) {
                     const commandFilePath = path.join(folderPath, file);
@@ -37,9 +38,16 @@ module.exports = {
                     // Require the command file
                     const command = require(commandFilePath);
                     
-                    // Add command information to the embed
+                    // Add command information to the array
+                    if (command && command.name && command.description) {
+                        commandDescriptions.push(`${command.name} - ${command.description}`);
+                    }
+                }
+
+                // Add category title and command descriptions to the embed
+                if (commandDescriptions.length > 0) {
                     helpEmbed.addFields(
-                        { name: command.name, value: command.description }
+                        { name: `**${folder.charAt(0).toUpperCase() + folder.slice(1)}**`, value: commandDescriptions.join("\n") }
                     );
                 }
             }
